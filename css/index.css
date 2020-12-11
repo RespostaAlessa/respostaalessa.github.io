@@ -58,6 +58,7 @@ body {
 }
 
 .grafico__alessa {
+    padding: 5px;
     margin-top: 30px;
     max-width: 800px;
     border-radius: 10px;
