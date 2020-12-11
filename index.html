@@ -33,6 +33,8 @@
         </div>
     </div>
     <script>
+        const instanceDate = new Date();
+        const date = `${instanceDate.getDay()}/${instanceDate.getMonth()}/${instanceDate.getFullYear()};
         $(function () {
             drawCharts('real', true, true);
         });
@@ -68,7 +70,7 @@
                 options: {
                     title: {
                         display: true,
-                        text: 'Análise 🤔 6 DE DEZEMBRO ATÉ HOJE 10/12/2020',
+                        text: `Análise 🤔 6 DE DEZEMBRO ATÉ HOJE ${date}`,
                         fontColor: '#fff'
                     },
                     legend: {
