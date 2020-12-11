@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container__wrapper">
+        <header class="header__top">
+            <h1>Gráficos com análise de horários das respostas de&nbsp;<b>Alessa</b> (by Hector Silva. Tu duvidou q eu n
+                ia fazer neh?, não duvide de mim kkkk)
+            </h1>
+        </header>
+        <div class="content__wrapper">
+            <img alt="Photo by Alessa Oliveira in Marília. A imagem pode conter: 1 pessoa." class="photo__alessa"
+                decoding="auto" width="250px" height="250px"
+                srcset="https://scontent-gru1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/46392663_491552544704514_2148492881395765928_n.jpg?_nc_ht=scontent-gru1-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=xUZRdt_h-ZMAX_LkcLW&amp;tp=1&amp;oh=f59527f3a591f32f5aaf3ff8a980990d&amp;oe=5FFB8A06 640w,https://scontent-gru1-1.cdninstagram.com/v/t51.2885-15/e35/46392663_491552544704514_2148492881395765928_n.jpg?_nc_ht=scontent-gru1-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=xUZRdt_h-ZMAX_LkcLW&amp;tp=1&amp;oh=ecb47bfc8bb7eb0f60003ae68e7dc72a&amp;oe=5FFCD8F4 750w,https://scontent-gru1-1.cdninstagram.com/v/t51.2885-15/e35/46392663_491552544704514_2148492881395765928_n.jpg?_nc_ht=scontent-gru1-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=xUZRdt_h-ZMAX_LkcLW&amp;tp=1&amp;oh=ecb47bfc8bb7eb0f60003ae68e7dc72a&amp;oe=5FFCD8F4 1080w"
+                src="https://scontent-gru1-1.cdninstagram.com/v/t51.2885-15/e35/46392663_491552544704514_2148492881395765928_n.jpg?_nc_ht=scontent-gru1-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=xUZRdt_h-ZMAX_LkcLW&amp;tp=1&amp;oh=ecb47bfc8bb7eb0f60003ae68e7dc72a&amp;oe=5FFCD8F4"
+                style="border-radius: 50%;">
+            <h1>Perfil de Alessa</h1>
+            <div class="grafico__alessa">
+                <canvas style="width: auto; max-width: 100%; max-height: auto; height: 400px;"
+                    id="chart_alessa"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            drawCharts('real', true, true);
+        });
+
+        function drawCharts(period, init_date, show_loading) {
+            const labels = [
+                "2020-12-06T14:11:24-03:00",
+                "2020-12-06T14:34:24-03:00",
+                "2020-12-06T22:49:24-03:00",
+                "2020-12-06T23:11:24-03:00",
+                "2020-12-06T09:25:24-03:00",
+                "2020-12-06T22:35:24-03:00",
+                "2020-12-06T18:29:24-03:00",
+            ];
+
+            const myChart = new Chart($("#chart_alessa"), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        spanGaps: false,
+                        label: 'Ignora esse número',
+                        fill: false,
+                        pointHitRadius: 25,
+                        backgroundColor: 'rgba(75,192,192,0.4)',
+                        borderColor: 'rgba(75,192,192,1)',
+                        pointBorderColor: 'rgba(75,192,192,1)',
+                        pointBackgroundColor: '#fff',
+                        data: [1, 24, 89, 91, 9, 85, 69],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Análise',
+                        fontColor: '#fff'
+                    },
+                    legend: {
+                        display: false,
+                        fontColor: '#fff'
+                    },
+                    animation: {
+                        duration: 500,
+                    },
+                    hover: {
+                        animationDuration: 100,
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontColor: '#fff'
+                            },
+                            type: 'time',
+                            time: {
+                                round: 'minutes',
+                                parser: "YYYY, M, D, H, m, s",
+                                displayFormats: {
+                                    'millisecond': '',
+                                    'second': 'H:mm',
+                                    'minute': 'H:mm',
+                                    'hour': 'H:mm',
+                                    'day': 'H:mm',
+                                    'week': 'MMM DD',
+                                    'month': 'MMM DD',
+                                    'quarter': 'MMM DD',
+                                    'year': 'MMM DD',
+                                },
+                                tooltipFormat: 'D MMM YYYY H:mm'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontColor: '#fff',
+                                beginAtZero: true,
+                                stepSize: 25,
+                                min: 0,
+                                max: 100,
+                                callback: function (value, index, values) {
+                                    return value + "% ";
+                                }
+                            }
+                        }]
+                    }
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>
