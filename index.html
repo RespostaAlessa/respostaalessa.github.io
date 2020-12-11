@@ -33,13 +33,13 @@
         </div>
     </div>
     <script>
-        const instanceDate = new Date();
-        const date = `${instanceDate.getDay()}/${instanceDate.getMonth()}/${instanceDate.getFullYear()}`;
         $(function () {
             drawCharts('real', true, true);
         });
 
         function drawCharts(period, init_date, show_loading) {
+            const instanceDate = new Date();
+            const date = `${instanceDate.getDay()}/${instanceDate.getMonth()}/${instanceDate.getFullYear()}`;
             const labels = [
                 "2020-12-06T14:11:24-03:00",
                 "2020-12-06T14:34:24-03:00",
